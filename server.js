@@ -24,6 +24,6 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/articles', articleRouter);
-app.use('/status', () => 'running');
+app.get('/status', (req, res) => res.json({ status: 'running' }));
 
 app.listen(PORT, 'localhost', () => console.log(`Listening on port ${PORT}`));
