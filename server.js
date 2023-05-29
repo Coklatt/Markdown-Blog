@@ -7,6 +7,7 @@ const app = express();
 require('dotenv').config();
 
 const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -26,4 +27,4 @@ app.get('/', async (req, res) => {
 app.use('/articles', articleRouter);
 app.get('/status', (req, res) => res.json({ status: 'running' }));
 
-app.listen(PORT, 'localhost', () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, HOST, () => console.log(`Listening on port ${PORT}`));
