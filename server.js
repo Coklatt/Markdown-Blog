@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Article = require('./models/article');
-const articleRoutes = require('./routes/articles');
+const articleRouter = require('./routes/articles');
 const methodOverride = require('method-override');
 const app = express();
 require('dotenv').config();
@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
     res.render('articles/index', { articles: articles });
 });
 
-app.use('/articles', articleRoutes);
+app.use('/articles', articleRouter);
 app.get('/status', (req, res) => res.json({ status: 'running' }));
 
-app.listen(PORT, HOST, () => console.log(`Listening on port ${HOST}:${PORT}`));
+app.listen(PORT, HOST, () => console.log(`Listening on port ${PORT}`));
